@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class MyStyle {
   Color darkColor = Colors.blue.shade900;
-  Color primaryColor = Colors.blue.shade200;
+  Color primaryColor = Colors.deepOrange.shade500;
+
+  Widget showProgrees() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  }
 
   SizedBox mySizeBox() => SizedBox(
         width: 8.0,
@@ -17,6 +23,17 @@ class MyStyle {
           fontWeight: FontWeight.bold,
         ),
       );
+
+  TextStyle mainTitle20() => TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+    );
+
+      TextStyle mainTitle16() => TextStyle(
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+    );
+ 
 
   Container showLogo() {
     return Container(

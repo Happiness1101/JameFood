@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:jamefood/utility/my_constant.dart';
 import 'package:jamefood/utility/my_style.dart';
 import 'package:jamefood/utility/signout_process.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +17,15 @@ class _MainUserState extends State<MainUser> {
   void initState() {
     super.initState();
     findUser();
+    readShop();
+  }
+
+  Future<Null> readShop() async {
+    String url =
+        '${MyConstant().domain}/jamefood/getUserWhereChooseType.php?isAdd=true&ChooseType=Shop';
+    await Dio().get(url).then((value) {
+      print('value ==> $value');
+    });
   }
 
   Future<Null> findUser() async {

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jamefood/screens/home.dart';
 import 'package:jamefood/screens/signin.dart';
+import 'package:jamefood/utility/my_constant.dart';
 import 'package:jamefood/utility/my_style.dart';
 import 'package:jamefood/utility/normal_dialog.dart';
 
@@ -78,7 +78,7 @@ class _SignUpState extends State<SignUp> {
 
   Future<Null> checkUser() async {
     String url =
-        'http://ad3e67d2425e.ngrok.io///phpmyadmin/getUserWhereUser.php?isAdd=true&User=$user';
+        '${MyConstant().domain}/phpmyadmin/getUserWhereUser.php?isAdd=true&User=$user';
     try {
       Response response = await Dio().get(url);
       if (response.toString() == 'null') {
@@ -91,7 +91,7 @@ class _SignUpState extends State<SignUp> {
 
   Future<Null> registerThread() async {
     String url =
-        'http://ad3e67d2425e.ngrok.io//phpmyadmin/addUser.php?isAdd=true&Name=$name&User=$user&Password=$password&ChooseType=$chooseType';
+        '${MyConstant().domain}/phpmyadmin/addUser.php?isAdd=true&Name=$name&User=$user&Password=$password&ChooseType=$chooseType';
     try {
       Response response = await Dio().get(url);
       print('res =$response');

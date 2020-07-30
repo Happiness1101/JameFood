@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jamefood/utility/my_style.dart';
 import 'package:jamefood/utility/signout_process.dart';
-import 'package:jamefood/wiget/food_list_manu_shop.dart';
+import 'package:jamefood/wiget/list_food_manu_shop.dart';
 import 'package:jamefood/wiget/infomation_shop.dart';
 import 'package:jamefood/wiget/order_list_shop.dart';
 

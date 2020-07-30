@@ -6,6 +6,7 @@ import 'package:jamefood/model/user_model.dart';
 import 'package:jamefood/screens/main_rider.dart';
 import 'package:jamefood/screens/main_shop.dart';
 import 'package:jamefood/screens/main_user.dart';
+import 'package:jamefood/utility/my_constant.dart';
 import 'package:jamefood/utility/my_style.dart';
 import 'package:jamefood/utility/normal_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,7 +45,7 @@ class _SignInState extends State<SignIn> {
                 userFrom(),
                 MyStyle().mySizeBox(),
                 passwordFrom(),
-                loginButton()
+                loginButton(),
               ],
             ),
           ),
@@ -79,7 +80,7 @@ class _SignInState extends State<SignIn> {
 
   Future<Null> checkAuthen() async {
     String url =
-        'http://ad3e67d2425e.ngrok.io//phpmyadmin/getUserWhereUser.php?isAdd=true&User=$user';
+        '${MyConstant().domain}/phpmyadmin/getUserWhereUser.php?isAdd=true&User=$user';
     try {
       Response response = await Dio().get(url);
       print('Response = $response');
@@ -88,7 +89,7 @@ class _SignInState extends State<SignIn> {
       for (var map in result) {
         UserModel userModel = UserModel.fromJson(map);
         if (password == userModel.password) {
-          String chooseType = userModel.chooneTyp;
+          String chooseType = userModel.chooseType;
           if (chooseType == 'User') {
             routeToService(MainUser(), userModel);
           } else if (chooseType == 'Shop') {
@@ -108,7 +109,7 @@ class _SignInState extends State<SignIn> {
   Future<Null> routeToService(Widget myWiget, UserModel userModel) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString('ID', userModel.id);
-    preferences.setString('ChooseType', userModel.chooneTyp);
+    preferences.setString('ChooseType', userModel.chooseType);
     preferences.setString('Name', userModel.name);
     MaterialPageRoute pageRoute = MaterialPageRoute(
       builder: (context) => myWiget,
